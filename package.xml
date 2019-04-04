@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <name>pointcloud_intensity</name>
+  <description>
+	ros publish all pointcloud with intensity
+  </description>
+  <version>0.0.1</version>
+  <maintainer email="zlb@gs-robot.com">Lingbing Zeng</maintainer>
+  <license>GPLv3</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>roscpp</build_depend>
+
+
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+
+</package>
