@@ -13,9 +13,11 @@
 #include <sensor_msgs/PointCloud.h>
 
 std::vector<Eigen::Vector4f> g_origin_points;
+std::vector<Eigen::Vector4f> origin_part_points;
 float g_min_x=1e6, g_max_x=-1e6, g_min_y=1e6, g_max_y=-1e6;
 
 ros::Publisher pub_all_points;
+
 int g_pub_count=0;
 
 void EigenVectorToMsg(const std::vector<Eigen::Vector4f>& points,
@@ -34,15 +36,16 @@ void EigenVectorToMsg(const std::vector<Eigen::Vector4f>& points,
 void PublishPointCloud(const ::ros::WallTimerEvent& unused_timer_event){
   if(pub_all_points.getNumSubscribers() > 0 && g_pub_count <1){
 
-  sensor_msgs::PointCloud all_point_cloud;
-  all_point_cloud.header.stamp = ::ros::Time::now();
-  all_point_cloud.header.frame_id = "world";
-  all_point_cloud.channels.resize(1);
-  all_point_cloud.channels[0].name = "intensity";
+    sensor_msgs::PointCloud all_point_cloud;
+    all_point_cloud.header.stamp = ::ros::Time::now();
+    all_point_cloud.header.frame_id = "world";
+    all_point_cloud.channels.resize(1);
+    all_point_cloud.channels[0].name = "intensity";
 
-  EigenVectorToMsg(g_origin_points, all_point_cloud);
-  pub_all_points.publish(all_point_cloud);
-    g_pub_count++;
+    EigenVectorToMsg(origin_part_points, all_point_cloud);
+    pub_all_points.publish(all_point_cloud);
+      g_pub_count++;
+    std::cout<<"[PublishPointCloud] ground points publish successful"<<std::endl;
   }
 }
 int main(int argc, char **argv) {
@@ -87,7 +90,24 @@ int main(int argc, char **argv) {
            <<"g_min_y="<<g_min_y<<" g_max_y="<<g_max_y<<std::endl;
   std::cout<<"ground points read successful"<<std::endl;
   pub_all_points = nh.advertise<sensor_msgs::PointCloud>("all_origin_points",10);
+  
+  int x_seg = 2;
+  int y_seg = 2;
+  //divid into x_seg*y_seg slices.
+  int seg_index  =  0;
 
+  float x_seg_num = (g_max_x - g_min_x)/x_seg;
+  float y_seg_num = (g_max_y - g_min_y)/y_seg;
+  float x_min = g_min_x + x_seg_num* (seg_index/y_seg);
+  float x_max = g_min_x + x_seg_num* ((seg_index/y_seg) + 1);
+  float y_min = g_min_y + y_seg_num* (seg_index%y_seg);
+  float y_max = g_min_y + y_seg_num* ((seg_index%y_seg)+1);
+  for(auto& point : g_origin_points){
+    if(point[0]>=x_min && point[0]<=x_max && 
+      point[1]>=y_min && point[1]<=y_max){
+      origin_part_points.emplace_back(point);
+    }
+  }
   ::ros::WallTimer wall_timers = nh.createWallTimer(
           ::ros::WallDuration(0.5), PublishPointCloud);
 

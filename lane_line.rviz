@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Status1
+        - /PointCloud1
         - /PointCloud1/Status1
       Splitter Ratio: 0.5
     Tree Height: 853
@@ -45,7 +46,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 223
+      Max Intensity: 217
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: PointCloud
@@ -59,6 +60,24 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: false
+      Value: true
+    - Alpha: 0.5
+      Cell Size: 10
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 1000
+      Reference Frame: <Fixed Frame>
       Value: true
   Enabled: true
   Global Options:
@@ -84,7 +103,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -1.67999995
+      Angle: -0.0700000003
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
@@ -94,11 +113,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Scale: 31.0584869
+      Scale: 8.55659771
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz)
-      X: 88.2057648
-      Y: 325.607483
+      X: -379.172668
+      Y: 859.59729
     Saved: ~
 Window Geometry:
   Displays:
