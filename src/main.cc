@@ -91,9 +91,9 @@ int main(int argc, char **argv) {
   std::cout<<"ground points read successful"<<std::endl;
   pub_all_points = nh.advertise<sensor_msgs::PointCloud>("all_origin_points",10);
   
-  int x_seg = 2;
-  int y_seg = 2;
-  //divid into x_seg*y_seg slices.
+  int x_seg = 1;
+  int y_seg = 1;
+  //divide into x_seg*y_seg slices.
   int seg_index  =  0;
 
   float x_seg_num = (g_max_x - g_min_x)/x_seg;

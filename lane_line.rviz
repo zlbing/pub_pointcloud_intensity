@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Status1
         - /PointCloud1
-        - /PointCloud1/Status1
       Splitter Ratio: 0.5
     Tree Height: 853
   - Class: rviz/Selection
@@ -28,11 +27,13 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: PointCloud
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 1
-      Autocompute Intensity Bounds: true
+      Autocompute Intensity Bounds: false
       Autocompute Value Bounds:
         Max Value: 10
         Min Value: -10
@@ -46,26 +47,26 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 217
+      Max Intensity: 5
       Min Color: 0; 0; 0
-      Min Intensity: 0
+      Min Intensity: 4
       Name: PointCloud
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.0299999993
+      Size (m): 0.0500000007
       Style: Flat Squares
       Topic: /pointcloud_intensity/all_origin_points
       Unreliable: false
       Use Fixed Frame: true
-      Use rainbow: false
+      Use rainbow: true
       Value: true
     - Alpha: 0.5
       Cell Size: 10
       Class: rviz/Grid
       Color: 160; 160; 164
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.0299999993
         Value: Lines
@@ -78,7 +79,7 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 1000
       Reference Frame: <Fixed Frame>
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -103,7 +104,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -0.0700000003
+      Angle: 0
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
@@ -113,11 +114,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Scale: 8.55659771
+      Scale: 10
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz)
-      X: -379.172668
-      Y: 859.59729
+      X: 0
+      Y: 0
     Saved: ~
 Window Geometry:
   Displays:
